@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Outpost: Astro-Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+</head>
+<body>
+
+    <!-- INTERSTELLAR BGM -->
+    <audio id="bgm" src="assets/background.mp3" loop preload="auto"></audio>
+
+    <!-- Intro Menu -->
+    <div id="menu">
+        <h2>NASA SPACE APPS CHALLENGE</h2>
+        <h1>MARS OUTPOST</h1>
+        <p>Welcome, Commander. A catastrophic meteor strike has crippled our Martian outpost. You have 50 critical tasks to complete. Manage your oxygen, stay inside the Habitat Dome during storms, and use the stairs to repair the solar array.</p>
+        
+        <div class="controls">
+            <div class="control-box"><b>CLICK</b><br>Lock Mouse</div>
+            <div class="control-box"><b>WASD / ARROWS</b><br>Move</div>
+            <div class="control-box"><b>SPACE</b><br>Jump</div>
+            <div class="control-box"><b>E</b><br>Interact / Doors</div>
+            <div class="control-box"><b>1, 2, 3</b><br>Switch Roles</div>
+        </div>
+
+        <button id="startBtn">INITIATE MISSION</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+        <div class="top-bar">
+            <div>TASK: <span id="task-count">1</span> / 50</div>
+            <div style="color: #e74c3c;">SURVIVE THE OUTPOST</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-row"><span>OXYGEN (O2)</span> <span id="o2-val">100%</span></div>
+            <div class="bar-bg"><div id="o2-bar" class="bar-fill"></div></div>
+            <div id="o2-cooldown">SYSTEM RECHARGING</div>
+            
+            <div class="stat-row" style="margin-top: 15px;"><span>BASE POWER</span> <span id="pwr-val">100%</span></div>
+            <div class="bar-bg"><div id="pwr-bar" class="bar-fill"></div></div>
+        </div>
+
+        <div class="quest-container">
+            <div class="quest-box" id="quest-text">OBJECTIVE: Loading...</div>
+            <div class="task-bar-bg" id="task-bar-bg"><div class="task-bar-fill" id="task-bar-fill"></div></div>
+        </div>
+        
+        <div id="event-alert">WARNING</div>
+        <div id="prompt">Hold E to Interact</div>
+
+        <div class="bottom-bar">
+            <div class="role-indicator" id="role-text" style="color: #3498db;">ROLE: ENGINEER (Blue)</div>
+            <div>Click to lock mouse | ESC to unlock | Press 1,2,3 to switch roles</div>
+        </div>
+    </div>
+
+    <div id="game-over">
+        <h1 id="go-title">MISSION FAILED</h1>
+        <p id="fail-reason" style="font-size: 20px; color: #fff;">Oxygen depleted.</p>
+        <button onclick="location.reload()">REBOOT SYSTEM</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
